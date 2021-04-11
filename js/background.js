@@ -11,7 +11,7 @@ function validateResponse(response) {
 }
 
 async function getRandomPhoto() {
-  const endpoint = 'https://api.unsplash.com/photos/random?orientation=landscape';
+  const endpoint = 'https://api.unsplash.com/photos/random?orientation=landscape&collection=998309,317099';
 
   // Creates a new Headers object.
   const headers = new Headers();
@@ -65,3 +65,17 @@ async function nextImage() {
 
 // Execute the `nextImage` function when the extension is installed
 chrome.runtime.onInstalled.addListener(nextImage);
+
+chrome.runtime.onInstalled.addListener(nextImage);
+
+
+chrome.runtime.onMessage.addListener((request) => {
+
+  if (request.command === 'next-image') {
+
+    nextImage();
+
+  }
+
+});
+
